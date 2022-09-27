@@ -1,0 +1,200 @@
+version: "2.0"
+
+nlu:
+
+- intent: space
+  examples: |
+    -      
+    -   
+    -  
+    -            
+    -                      
+    -    
+    -                                
+    -       
+# Chào
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - chào bot
+- intent: give_role
+  examples: |
+    - Bạn làm được gì?
+    - Mình cần hỗ trợ?
+    - Bot có thể làm gì?
+    - Bot tìm khóa học này giúp mình với
+- intent: give_name
+  examples: |
+    - Mình tên [Minh Vinh](cust_name)
+    - Mình tên là tên [Huỳnh](cust_name)
+
+- intent: default_list
+  examples: |
+    - nói gì đi
+    - doqiwdkjpqwxczxc
+    - qưdqw
+    - cxvxvxozivjoizvp
+    - không có hỏi cái gì hết
+    - 70890
+    - 12321323904790580934523
+    - v5o90 tr49 0n06 7iub 95o 696o9 767
+# Bot
+- intent: bot_challenge
+  examples: |
+    - bot
+    - are you a human?
+# Tạm biệt
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - tạm biệt
+    - chào tạm biệt bot
+    - hẹn gặp lại
+
+- intent: ask_category
+  examples: |
+    - Các khóa học [ngôn ngữ lập trình](category) hiện có tại website?
+    - [ngôn ngữ lập trình](category) hiện có?
+    - Các khóa học [lập trình website](category) hiện có tại website?
+    - [lập trình website](category) hiện có?
+    - Các khóa học [lập trình game](category) hiện có tại website?
+    - [lập trình game](category) hiện có?
+- synonym: category
+  examples: |
+    - website
+    - web
+    - wed
+    - wedsite
+
+- intent: ask_courseCode
+  examples: |
+    - Khóa học có mã khóa học [CT8](course_code) là khóa học nào?
+    - Khóa học [CT8](course_code)
+    - Mã hóa học [CT8](course_code)
+    - [CT8](course_code)
+    - Khóa học có mã khóa học [CT9](course_code) là khóa học nào?
+    - Khóa học [CT9](course_code)
+    - Mã hóa học [CT9](course_code)
+    - [CT9](course_code)
+    - Khóa học có mã khóa học [CT6](course_code) là khóa học nào?
+    - Khóa học [CT6](course_code)
+    - Mã hóa học [CT6](course_code)
+    - [CT6](course_code)
+    - Khóa học có mã khóa học [CT7](course_code) là khóa học nào?
+    - Khóa học [CT7](course_code)
+    - Mã hóa học [CT7](course_code)
+    - [CT7](course_code)
+    - Khóa học có mã khóa học [CT10](course_code) là khóa học nào?
+    - Khóa học [CT10](course_code)
+    - Mã hóa học [CT10](course_code)
+    - [CT10](course_code)
+
+- synonym: course_code
+  examples: |
+    - ct007
+    - ct07
+
+#
+- intent: ask_instructor
+  examples: |
+    - Giảng viên [Trần Duy Thanh](instructor) dạy khóa học nào
+    - Thầy [Trần Duy Thanh](instructor) dạy khóa học nào
+    - Giáo viên [Trần Duy Thanh](instructor)
+    - Giảng viên [trần duy thanh](instructor) dạy khóa học nào
+    - Thầy [trần duy thanh](instructor) dạy khóa học nào
+    - Giáo viên [trần duy thanh](instructor)
+    - Giảng viên [Trương Minh Tuấn](instructor) dạy khóa học nào
+    - Thầy [Trương Minh Tuấn](instructor) dạy khóa học nào
+    - Giáo viên [Trương Minh Tuấn](instructor)
+    - Giảng viên [trương minh tuấn](instructor) dạy khóa học nào
+    - Thầy [trương minh tuấn](instructor) dạy khóa học nào
+    - Giáo viên [trương minh tuấn](instructor)
+    - Giảng viên [Trương Nguyễn Hoàng](instructor) dạy khóa học nào
+    - Thầy [Trương Nguyễn Hoàng](instructor) dạy khóa học nào
+    - Giáo viên [Trương Nguyễn Hoàng](instructor)
+    - Giảng viên [Vũ Quốc Tuấn](instructor) dạy khóa học nào
+    - Thầy [Vũ Quốc Tuấn](instructor) dạy khóa học nào
+    - Giáo viên [Vũ Quốc Tuấn](instructor)
+    - Giảng viên [vũ quốc tuấn](instructor) dạy khóa học nào
+    - Thầy [vũ quốc tuấn](instructor) dạy khóa học nào
+    - Giáo viên [vũ quốc tuấn](instructor)
+#
+
+#
+
+#
+- intent: ask_skill_level
+  examples: |
+    - Các khóa học [cơ bản](skill_level) hiện có
+    - Khóa học [cơ bản](skill_level) hiện có
+    - Các khóa học [nâng cao](skill_level) hiện có
+    - Khóa học [nâng cao](skill_level) hiện có
+
+- intent: ask_language
+  examples: |
+    - Các khóa học ngôn ngữ [python](language)
+    - Các khóa học ngôn ngữ [C#](language)
+    - Các khóa học ngôn ngữ [PHP](language)
+    - Các khóa học ngôn ngữ [C++](language)
+
+- intent: ask_duration
+  examples: |
+    - Các khóa học có thời gian học [10](duration) tuần
+    - Các khóa học có thời gian học [15](duration) tuần
+    - Các khóa học có thời gian học [20](duration) tuần
+    - Các khóa học có thời gian học [25](duration) tuần
+    - Các khóa học có thời gian học [30](duration) tuần
+    - Các khóa học có thời gian học [35](duration) tuần
+
+- intent: ask_start_day
+  examples: |
+    - Các khóa học bắt đầu vào tháng [09-2022](start_day)
+    - Khóa học bắt đầu vào tháng [08-2022](start_day)
+    - Tháng [09-2021](start_day) có những khóa học nào
+    - Từ tháng [08-2021](start_day) có những khóa học nào 
+
+- intent: ask_courseName
+  examples: |
+    - Khóa học [Lập trình game 3D với Unity](course_name) có mã khóa học là gì?
+    - Mã khóa học của khóa học [Lập trình game 3D với Unity](course_name)
+    - Mã khóa học của [Lập trình game 3D với Unity](course_name)
+    - Khóa học [Lập Trình Python Từ Zero - Hero](course_name) có mã khóa học là gì?
+    - Mã khóa học của khóa học [Lập Trình Python Từ Zero - Hero](course_name)
+    - Mã khóa học của [Lập Trình Python Từ Zero - Hero](course_name)
+
+- intent: ask_nameStartDay
+  examples: |
+    - Khóa học [Lập trình game 3D với Unity](nameStartDay) bắt đầu vào ngày nào?
+    - Ngày bắt đầu của khóa học [Lập trình game 3D với Unity](nameStartDay)
+
+- intent: ask_nameCost
+  examples: |
+    - Khóa học [Lập trình game 3D với Unity](nameCost) bao nhiêu tiền?
+    - Khóa học [Lập trình game 3D với Unity](nameCost) có giá tiền?
+    - Giá tiền của khóa học [Lập trình game 3D với Unity](nameCost)
+    - Giá tiền [Toàn tập ngôn ngữ lập trình C#](nameCost) 
+
+- intent: ask_nameDuration
+  examples: |
+    - Khóa học [Lập trình game 3D với Unity](nameDuration) học trong bao lâu?
+    - Khóa học [Lập Trình Python Từ Zero - Hero](nameDuration) học trong bao nhiêu tuần?
+    - Thời gian của khóa học [Lập Trình Python Từ Zero - Hero](nameDuration) bao nhiêu tuần
+#- intent: ask_interval
+#    - Các khóa học có khoảng thời gian học từ [15](interval) đến [20](interval2) tuần
+#    - Các khóa học có khoảng thời gian học từ [20](interval) đến [25](interval2) tuần
+#    - Các khóa học có khoảng thời gian học từ [25](interval) đến [30](interval2) tuần
+#    - Các khóa học có khoảng thời gian học từ [20](interval) đến [30](interval2) tuần
+#    - Các khóa học có khoảng thời gian học từ [15](interval) đến [25](interval2) tuần
+#    - Khóa học từ [15](interval) đến [25](interval2) tuần
+#    - Khóa học từ [10](interval) đến [30](interval2) tuần
+
+
+- intent: ask_detailCourse
+  examples: |
+    - Chi tiết khóa học [Lập trình python 3D với Unity](detail)
+    - Đăng ký khóa học [Lập trình python 3D với Unity](detail)
+    - Chi tiết [Lập trình python 3D với Unity](detail)
+    - Đăng ký [Lập trình python 3D với Unity](detail)

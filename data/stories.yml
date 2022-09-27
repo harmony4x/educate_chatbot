@@ -1,0 +1,80 @@
+version: "2.0"
+
+stories:
+
+
+
+- story: teststory1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: give_name
+  - action: utter_greet_with_name
+  - intent: bot_challenge
+  - action: utter_iamabot
+  - intent: give_role
+  - action: utter_role
+  - intent: ask_category
+  - action: action_category
+  - intent: default_list
+  - action: utter_default
+
+- story: teststory2
+  steps:
+  - intent: ask_courseCode
+  - action: action_courseCode
+
+- story: teststory3
+  steps:
+  - intent: ask_instructor
+  - action: action_instructor
+
+- story: teststory4
+  steps:
+  - intent: ask_duration
+  - action: action_duration
+
+- story: teststory5
+  steps:
+  - intent: ask_skill_level
+  - action: action_skillLevel
+
+- story: teststory6
+  steps:
+  - intent: ask_language
+  - action: action_language
+
+- story: teststory7
+  steps:
+  - intent: ask_start_day
+  - action: action_startDay
+
+- story: teststory8
+  steps:
+  - intent: ask_courseName
+  - action: action_courseName
+
+- story: teststory9
+  steps:
+  - intent: ask_detailCourse
+  - action: action_detailCourse
+
+- story: teststory10
+  steps:
+  - intent: ask_nameStartDay
+  - action: action_nameStartDay
+
+- story: teststory11
+  steps:
+  - intent: ask_nameCost
+  - action: action_nameCost
+
+- story: teststory12
+  steps:
+  - intent: ask_nameDuration
+  - action: action_nameDuration
+
+#- story: teststory5
+#  steps:
+#  - intent: ask_interval
+#  - action: action_interval
