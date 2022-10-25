@@ -6,9 +6,7 @@ import mysql.connector
 import feedparser
 import re
 
-
 from datetime import datetime
-
 
 class action_category(Action):
 
@@ -37,7 +35,7 @@ class action_category(Action):
             db.rollback()
             db.close()
 
-            if (len(categoryArray) > 0):
+            if (len(categoryArray) > 0): 
                 codeOfVariable = categoryArray[0]
                 courseReturn = []
                 db = mysql.connector.connect(host="127.0.0.1", user="root", passwd="", database="tiny_educate")
@@ -45,22 +43,62 @@ class action_category(Action):
                 codeOfCategory = "SELECT * FROM course WHERE category_id LIKE '%{}%'".format(codeOfVariable)
                 curCourse.execute(codeOfCategory)
                 result = curCourse.fetchall()
-                for x in result:
-                    courseReturn.append(x[1])
-                db.rollback()
-                db.close()
-                dispatcher.utter_message("Các khóa học " + categoryVariable + " hiện có tại website là: ")
-                for  x in (courseReturn):
-                    i=1
-                    dispatcher.utter_message( x)
-                    i=i+1
-
-                return []
+                if(len(result)):
+                    for x in result:
+                        courseReturn.append(x[1])
+                    db.rollback()
+                    db.close()
+                    dispatcher.utter_message("Các khóa học " + categoryVariable + " hiện có tại website là: ")
+                    for  x in (courseReturn):
+                        i=1
+                        dispatcher.utter_message( x)
+                        i=i+1
+                    
+                    return []
+                else:
+                    dispatcher.utter_message("0 kết quả cho tìm kiếm này!")
             else:
                 dispatcher.utter_message("0 kết quả cho tìm kiếm này!")
         except:
             dispatcher.utter_message("Tôi không hiểu!")
 
+
+class action_allCategory(Action):
+
+    def name(self) -> Text:
+        return "action_allCategory"
+
+    def run(
+        self,
+        dispatcher: "CollectingDispatcher",
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+        try:
+            categoryVariable = tracker.get_slot("allcategory")
+            categoryArray = []
+            db = mysql.connector.connect(host="127.0.0.1", user="root", passwd ="", database="tiny_educate")
+            curCourse = db.cursor()
+            codeOfCategory = "SELECT * FROM categories"
+            curCourse.execute(codeOfCategory)
+            result = curCourse.fetchall()
+            for x in result:
+                categoryArray.append(x[1])
+
+            db.rollback()
+            db.close()
+
+            if (len(categoryArray) > 0): 
+                dispatcher.utter_message("Tất cả các danh mục hiện có tại website là: ")
+                for  x in (categoryArray):
+                    dispatcher.utter_message( x)
+                
+                return []
+                
+            else:
+                dispatcher.utter_message("0 kết quả cho tìm kiếm này!")
+        except:
+            dispatcher.utter_message("Tôi không hiểu!")
 
 class action_courseCode(Action):
 
@@ -200,54 +238,7 @@ class action_duration(Action):
         except:
             dispatcher.utter_message("Tôi không hiểu!")
 
-# class action_interval(Action):
-#
-#     def name(self) -> Text:
-#         return "action_interval"
-#
-#     def run(
-#         self,
-#         dispatcher: "CollectingDispatcher",
-#         tracker: Tracker,
-#         domain: "DomainDict",
-#     ) -> List[Dict[Text, Any]]:
-#
-#         courseVariable = tracker.get_slot("interval")
-#         courseVariable2 = tracker.get_slot("interval2")
-#         course_codeArray = []
-#         db = mysql.connector.connect(host="127.0.0.1", user="root", passwd ="", database="tiny_educate")
-#         curCourse = db.cursor()
-#         codeOfCourse = "SELECT * FROM course_detail WHERE duration BETWEEN '{}' AND '{}'".format(courseVariable,courseVariable2)
-#         curCourse.execute(codeOfCourse)
-#         result = curCourse.fetchall()
-#         for x in result:
-#             course_codeArray.append(x[1])
-#
-#         db.rollback()
-#         db.close()
-#         dispatcher.utter_message("Các khóa học có thời gian học " + courseVariable + "  là: ")
-#
-#         if (len(course_codeArray) > 0):
-#             courseReturn = []
-#             for x in course_codeArray:
-#                 codeOfVariable = x
-#
-#                 db = mysql.connector.connect(host="127.0.0.1", user="root", passwd="", database="tiny_educate")
-#                 curCourse = db.cursor()
-#                 codeOfCourse = "SELECT * FROM course WHERE course_code LIKE '%{}%'".format(codeOfVariable)
-#                 curCourse.execute(codeOfCourse)
-#                 result = curCourse.fetchall()
-#                 for x in result:
-#                     courseReturn.append(x[1])
-#                 db.rollback()
-#                 db.close()
-#             dispatcher.utter_message("Các khóa học có thời gian học " + courseVariable + "  là: ")
-#             for x in courseReturn:
-#                 dispatcher.utter_message(x)
-#
-#             return []
-#         else:
-#             dispatcher.utter_message("0 kết quả cho tìm kiếm này!")
+
 
 class action_skillLevel(Action):
 
@@ -636,5 +627,88 @@ class action_nameDuration(Action):
                 return []
             else:
                 dispatcher.utter_message("0 kết quả cho tìm kiếm này!")
+        except:
+            dispatcher.utter_message("Tôi không hiểu!")
+
+class action_teacherCourse(Action):
+
+    def name(self) -> Text:
+        return "action_teacherCourse"
+
+    def run(
+        self,
+        dispatcher: "CollectingDispatcher",
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+        try:
+            courseVariable = tracker.get_slot("teachercourse")
+            courseArray = []
+            courseName = []
+            db = mysql.connector.connect(host="127.0.0.1", user="root", passwd ="", database="tiny_educate")
+            curCourse = db.cursor()
+            codeOfCourse = "SELECT * FROM course WHERE title LIKE '%{}%'".format(courseVariable)
+            curCourse.execute(codeOfCourse)
+            result = curCourse.fetchall()
+            for x in result:
+                courseArray.append(x[4])
+                courseName.append(x[1])
+
+            db.rollback()
+            db.close()
+
+            if (len(courseArray) > 0):
+                codeOfVariable = courseArray[0]
+                courseReturn = []
+                db = mysql.connector.connect(host="127.0.0.1", user="root", passwd="", database="tiny_educate")
+                curCourse = db.cursor()
+                codeOfCourse = "SELECT * FROM course_detail WHERE course_code LIKE '%{}%'".format(codeOfVariable)
+                curCourse.execute(codeOfCourse)
+                result = curCourse.fetchall()
+                for x in result:
+                    courseReturn.append(x[2])
+                db.rollback()
+                db.close()
+                for x in (courseReturn):
+                    dispatcher.utter_message("Người dạy khóa học "+courseVariable+ " là : " +x )
+
+                return []
+            else:
+                dispatcher.utter_message("0 kết quả cho tìm kiếm này!")
+        except:
+            dispatcher.utter_message("Tôi không hiểu!")
+
+class action_Contact(Action):
+
+    def name(self) -> Text:
+        return "action_Contact"
+
+    def run(
+        self,
+        dispatcher: "CollectingDispatcher",
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> List[Dict[Text, Any]]:
+        try:
+            categoryVariable = tracker.get_slot("contact")
+            categoryArray = []
+            db = mysql.connector.connect(host="127.0.0.1", user="root", passwd ="", database="tiny_educate")
+            curCourse = db.cursor()
+            codeOfCategory = "SELECT * FROM contacts"
+            curCourse.execute(codeOfCategory)
+            result = curCourse.fetchall()
+            for x in result:
+                categoryArray.append(x[2] + " " + x[3])
+
+            db.rollback()
+            db.close()
+
+            dispatcher.utter_message("Địa chỉ liên hệ trung tâm là: ")
+            for  x in (categoryArray):
+                dispatcher.utter_message( x)
+            
+            return []
+                
+
         except:
             dispatcher.utter_message("Tôi không hiểu!")

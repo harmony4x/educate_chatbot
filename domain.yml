@@ -2,7 +2,7 @@ version: "2.0"
 
 intents:
   - greet:
-      use_entities: true
+      use_entities: false
   - give_role:
       use_entities: false
   - bot_challenge:
@@ -17,6 +17,8 @@ intents:
       use_entities: false
   - give_rule:
       use_entities: false
+  - ask_Register:
+      use_entities: false 
   - ask_category:
       use_entites: true
   - ask_courseCode:
@@ -43,6 +45,13 @@ intents:
       use_entites: true
   - ask_nameDuration:
       use_entites: true
+  - ask_allCategory:
+      use_entites: true
+  - ask_teacherCourse:
+      use_entites: true
+  - ask_Contact:
+      use_entites: true   
+ 
 
 responses:
   utter_greet:
@@ -51,9 +60,9 @@ responses:
   - text: Chào bạn {cust_name}. Có thể giúp gì cho bạn không?
   - text: Website thông tin có thể giúp gì cho bạn {cust_name} ạ?
   utter_did_that_help:
-  - text: Did that help you?
+  - text: Tôi có thế giúp gì cho bạn?
   utter_happy:
-  - text: Great, carry on!
+  - text: Thật tuyệt vời khi được hỗ trợ bạn!
   utter_goodbye:
   - text: Bye
   - text: "Kính chào tạm biệt và chúc quý khách một ngày tốt lành!"
@@ -65,6 +74,8 @@ responses:
   - text: Xin lỗi tôi không hiểu câu hỏi của bạn. Bạn có thể hỏi lại một lần nữa không?
   - text: I'm sorry. Rất tiếc tôi chưa hiểu ý của bạn?
   - text: Bạn có thể lặp lại lần nữa không?
+  utter_ask_Register:
+  - text: Mời bạn đăng ký trực tiếp tại trung tâm hoặc ghi danh ở http://localhost/tiny_edukate/public/dang-ky-khoa-hoc
 
 session_config:
   session_expiration_time: 60
@@ -85,6 +96,9 @@ entities:
   - nameStartDay
   - nameDuration
   - nameCost
+  - allcategory
+  - teachercourse
+  - contact
 #  - interval
 #  - interval2
 
@@ -131,12 +145,17 @@ slots:
   nameDuration:
     auto_fill: true
     type: text
-#  interval:
-#    type: text
-#    auto_fill: true
-#  interval2:
-#    type: text
-#    auto_fill: true
+  allcategory:
+    auto_fill: true
+    type: text
+  teachercourse:
+    auto_fill: true
+    type: text
+  contact:
+    auto_fill: true
+    type: text
+
+
 
 
 actions:
@@ -152,4 +171,7 @@ actions:
   - action_nameStartDay
   - action_nameDuration
   - action_nameCost
-#  - action_interval
+  - action_allCategory
+  - action_teacherCourse
+  - action_Contact
+

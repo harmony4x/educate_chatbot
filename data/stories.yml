@@ -74,7 +74,22 @@ stories:
   - intent: ask_nameDuration
   - action: action_nameDuration
 
-#- story: teststory5
-#  steps:
-#  - intent: ask_interval
-#  - action: action_interval
+- story: teststory13
+  steps:
+  - intent: ask_allCategory
+  - action: action_allCategory
+
+- story: teststory14
+  steps:
+  - intent: ask_teacherCourse
+  - action: action_teacherCourse
+
+- story: teststory15
+  steps:
+  - intent: ask_Contact
+  - action: action_Contact
+
+- story: teststory16
+  steps:
+  - intent: ask_Register
+  - action: utter_ask_Register
